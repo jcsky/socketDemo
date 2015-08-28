@@ -42,12 +42,13 @@
         }
         else{
           player.stopVideo();
-          $('#Abl').text('Abl:'+msg.absolute);
-          $('#alpha').text('alpha:'+msg.alpha);
-          $('#beta').text('beta:'+msg.beta);
-          $('#gamma').text('gamma:'+msg.gamma);
         }
-        $('#messages').append($('<li>').text(msg));
+        var message = JSON.parse(msg);
+        $('#Abl').text('Abl:'+message.absolute);
+        $('#alpha').text('alpha:'+message.alpha);
+        $('#beta').text('beta:'+message.beta);
+        $('#gamma').text('gamma:'+message.gamma);
+        $('#messages').text(message.play);
       });
       // 3. This function creates an <iframe> (and YouTube player)
       //    after the API code downloads.
