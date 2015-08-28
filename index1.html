@@ -56,11 +56,12 @@
           alpha    :Math.round(event.alpha),
           beta     :Math.round(event.beta),
           gamma    :Math.round(event.gamma),
-          play     :if(window.orientation < 0){return 'start'}else{return 'stop'}
+          play     :function(){
+                    if(window.orientation < 0){return 'start'}else{return 'stop'}
+                   }
         }
         socket.emit('chat message', msg);
       }
-
     </script>
   </body>
 </html>
