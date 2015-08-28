@@ -34,15 +34,15 @@
       // });
       window.addEventListener("deviceorientation", showOrientation, true);
 
-      window.setInterval("deviceAngle",100);
+      window.setInterval("deviceAngle",1000);
       function deviceAngle(){
         var angle;
         if(angle*window.orientation < 0){
           if (angle < 0){
-            msg = {play:start}
+            msg = {play:'start',absolute:'setInterval'}
             socket.emit('chat message', JSON.stringify(msg));
           }else{
-            msg = {play:stop}
+            msg = {play:'stop',absolute:'setInterval'}
             socket.emit('chat message', JSON.stringify(msg));
           }
         }

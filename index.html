@@ -18,8 +18,8 @@
       var randomValue = new String(Math.floor(Math.random() * Math.pow(36, 5)).toString(36)).toUpperCase();
       document.write("<h1>Your Channel: "+randomValue+"</h1>")
     </script>
-    <ul id="messages"></ul>
     <div id="aaa"></div>
+    <p id="play">play:</p>
     <p id="orientation">orientation:</p>
     <p id="Abl">Abl:</p>
     <p id="alpha">alpha:</p>
@@ -44,7 +44,7 @@
         $('#alpha').text('alpha:'+message.alpha);
         $('#beta').text('beta:'+message.beta);
         $('#gamma').text('gamma:'+message.gamma);
-        $('#messages').text(message.play);
+        $('#play').text(message.play);
         if (messag.play == 'start'){
           player.playVideo();
         }
