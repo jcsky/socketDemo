@@ -44,10 +44,10 @@
           player.stopVideo();
         }
         var message = JSON.parse(msg);
-        $('#Abl').text('Abl:'+Math.round(message.absolute));
-        $('#alpha').text('alpha:'+Math.round(message.alpha));
-        $('#beta').text('beta:'+Math.round(message.beta));
-        $('#gamma').text('gamma:'+Math.round(message.gamma));
+        $('#Abl').text('Abl:'+message.absolute);
+        $('#alpha').text('alpha:'+message.alpha);
+        $('#beta').text('beta:'+message.beta);
+        $('#gamma').text('gamma:'+message.gamma);
         $('#messages').text(message.play);
       });
       // 3. This function creates an <iframe> (and YouTube player)

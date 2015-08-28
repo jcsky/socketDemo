@@ -36,10 +36,10 @@
       function handleOrientation(event) {
         msg= {
           // var absolute,alpha,beta,gamma;
-          absolute :event.absolute,
-          alpha    :event.alpha,
-          beta     :event.beta,
-          gamma    :event.gamma,
+          absolute :Math.round(event.absolute),
+          alpha    :Math.round(event.alpha),
+          beta     :Math.round(event.beta),
+          gamma    :Math.round(event.gamma),
           play     :$('#m').val()
         }
         socket.emit('chat message', JSON.stringify(msg));
