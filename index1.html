@@ -57,7 +57,7 @@
           beta     :Math.round(event.beta),
           gamma    :Math.round(event.gamma),
           play     :function(){
-                    if(window.orientation < 0){'start'}else{'stop'}
+                    if(window.orientation < 0){return 'start'}else{return 'stop'}
                    }
         };
         socket.emit('chat message', msg);

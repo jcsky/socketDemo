@@ -44,8 +44,8 @@
         $('#alpha').text('alpha:'+message.alpha);
         $('#beta').text('beta:'+message.beta);
         $('#gamma').text('gamma:'+message.gamma);
-        $('#play').text(message.play);
-        if (messag.play == 'start'){
+        $('#play').text('play:'+message.play);
+        if (message.play == 'start'){
           player.playVideo();
         }
         else{
