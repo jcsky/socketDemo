@@ -20,10 +20,11 @@
     </script>
     <ul id="messages"></ul>
     <div id="aaa"></div>
-    <p id="Abl"></p>
-    <p id="alpha"></p>
-    <p id="beta"></p>
-    <p id="gamma"></p>
+    <p id="orientation">orientation:</p>
+    <p id="Abl">Abl:</p>
+    <p id="alpha">alpha:</p>
+    <p id="beta">beta:</p>
+    <p id="gamma">gamma:</p>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
@@ -37,18 +38,19 @@
 
       var player;
       socket.on('chat message', function(msg){
-        if (msg.play == 'start'){
-          player.playVideo();
-        }
-        else{
-          player.stopVideo();
-        }
         var message = JSON.parse(msg);
+        $('#Abl').text('orientation:'+message.orientation);
         $('#Abl').text('Abl:'+message.absolute);
         $('#alpha').text('alpha:'+message.alpha);
         $('#beta').text('beta:'+message.beta);
         $('#gamma').text('gamma:'+message.gamma);
         $('#messages').text(message.play);
+        if (messag.play == 'start'){
+          player.playVideo();
+        }
+        else{
+          player.stopVideo();
+        }
       });
       // 3. This function creates an <iframe> (and YouTube player)
       //    after the API code downloads.

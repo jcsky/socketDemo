@@ -32,10 +32,26 @@
       // socket.on('chat message', function(msg){
       //   $('#messages').append($('<li>').text(msg));
       // });
-      window.addEventListener("deviceorientation", handleOrientation, true);
-      function handleOrientation(event) {
+      window.addEventListener("deviceorientation", showOrientation, true);
+      window.setInterval("deviceAngle",100);
+
+      function deviceAngle(){
+        var angle;
+        if(angle*window.orientation < 0){
+          if (angle < 0){
+            msg = {play:start}
+            socket.emit('chat message', JSON.stringify(msg));
+          }else{
+            msg = {play:stop}
+            socket.emit('chat message', JSON.stringify(msg));
+          }
+        }
+        angle = window.orientation
+      }
+
+      function showOrientation(event) {
         msg= {
-          // var absolute,alpha,beta,gamma;
+          orientation:window.orientation,
           absolute :Math.round(event.absolute),
           alpha    :Math.round(event.alpha),
           beta     :Math.round(event.beta),
