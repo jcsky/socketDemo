@@ -34,14 +34,14 @@
       // });
       window.addEventListener("deviceorientation", handleOrientation, true);
       function handleOrientation(event) {
-        var msg = {
-          absolute = event.absolute;
-          alpha    = event.alpha;
-          beta     = event.beta;
-          gamma    = event.gamma;
-          play     = $('#m').val());
-        };
-
+        msg= {
+          // var absolute,alpha,beta,gamma;
+          absolute :event.absolute,
+          alpha    :event.alpha,
+          beta     :event.beta,
+          gamma    :event.gamma,
+          play     :$('#m').val()
+        }
         socket.emit('chat message', JSON.stringify(msg));
       }
 
