@@ -33,8 +33,8 @@
       //   $('#messages').append($('<li>').text(msg));
       // });
       window.addEventListener("deviceorientation", showOrientation, true);
-      window.setInterval("deviceAngle",100);
 
+      window.setInterval("deviceAngle",100);
       function deviceAngle(){
         var angle;
         if(angle*window.orientation < 0){
@@ -58,7 +58,7 @@
           gamma    :Math.round(event.gamma),
           play     :$('#m').val()
         }
-        socket.emit('chat message', JSON.stringify(msg));
+        socket.emit('chat message', msg);
       }
 
     </script>

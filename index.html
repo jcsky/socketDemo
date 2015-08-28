@@ -38,8 +38,8 @@
 
       var player;
       socket.on('chat message', function(msg){
-        var message = JSON.parse(msg);
-        $('#Abl').text('orientation:'+message.orientation);
+        var message = msg;
+        $('#orientation').text('orientation:'+message.orientation);
         $('#Abl').text('Abl:'+message.absolute);
         $('#alpha').text('alpha:'+message.alpha);
         $('#beta').text('beta:'+message.beta);
