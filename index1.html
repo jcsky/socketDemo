@@ -29,12 +29,20 @@
         socket.emit('chat message', $('#m').val());
         return false;
       });
-      socket.on('chat message', function(msg){
-        $('#messages').append($('<li>').text(msg));
-      });
+      // socket.on('chat message', function(msg){
+      //   $('#messages').append($('<li>').text(msg));
+      // });
       window.addEventListener("deviceorientation", handleOrientation, true);
       function handleOrientation(event) {
-        socket.emit('chat message', 'start');
+        var msg = {
+          absolute = event.absolute;
+          alpha    = event.alpha;
+          beta     = event.beta;
+          gamma    = event.gamma;
+          play     = $('#m').val());
+        };
+
+        socket.emit('chat message', JSON.stringify(msg));
       }
 
     </script>

@@ -14,13 +14,16 @@
     </style>
   </head>
   <body>
-    <p id="channel-name"></p>
     <script>
       var randomValue = new String(Math.floor(Math.random() * Math.pow(36, 5)).toString(36)).toUpperCase();
       document.write("<h1>Your Channel: "+randomValue+"</h1>")
     </script>
     <ul id="messages"></ul>
     <div id="aaa"></div>
+    <p id="Abl"></p>
+    <p id="alpha"></p>
+    <p id="beta"></p>
+    <p id="gamma"></p>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
@@ -34,10 +37,16 @@
 
       var player;
       socket.on('chat message', function(msg){
-        if (msg == 'start')
+        if (msg.play == 'start'){
           player.playVideo();
-        if (msg == 'stop')
+        }
+        else{
           player.stopVideo();
+          $('#Abl').text('Abl:'+msg.absolute);
+          $('#alpha').text('alpha:'+msg.alpha);
+          $('#beta').text('beta:'+msg.beta);
+          $('#gamma').text('gamma:'+msg.gamma);
+        }
         $('#messages').append($('<li>').text(msg));
       });
       // 3. This function creates an <iframe> (and YouTube player)
@@ -69,7 +78,6 @@
       function stopVideo() {
         player.stopVideo();
       }
-      // document.getElementById('channel-name').innerHTML(randomValue);
 
     </script>
   </body>
