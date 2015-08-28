@@ -50,16 +50,16 @@
       }
 
       function showOrientation(event) {
-        msg= {
+        var msg = {
           orientation:window.orientation,
           absolute :Math.round(event.absolute),
           alpha    :Math.round(event.alpha),
           beta     :Math.round(event.beta),
           gamma    :Math.round(event.gamma),
           play     :function(){
-                    if(window.orientation < 0){return 'start'}else{return 'stop'}
+                    if(window.orientation < 0){'start'}else{'stop'}
                    }
-        }
+        };
         socket.emit('chat message', msg);
       }
     </script>
