@@ -56,10 +56,9 @@
           alpha    :Math.round(event.alpha),
           beta     :Math.round(event.beta),
           gamma    :Math.round(event.gamma),
-          play     :function(){
-                    if(window.orientation < 0){return 'start';}else{return 'stop';}
-                   }
+          play     :'start'
         };
+        (window.orientation < 0)? msg.play = 'start' : msg.play = 'stop';
         socket.emit('chat message', msg);
       }
     </script>
