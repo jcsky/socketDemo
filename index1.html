@@ -45,7 +45,7 @@
         };
         (window.orientation < 0)? msg.play = 'start' : msg.play = 'stop';
         $('#log').text=channel+" "+msg.play+" "+msg.alpha;
-        socket.emit(linked, msg);
+        socket.emit('linked', msg);
       }
     </script>
   </body>
