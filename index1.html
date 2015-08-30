@@ -40,6 +40,7 @@
         var old_orientation;
         var new_orientation;
         new_orientation = round(window.orientation);
+        $('#log').text(new_orientation+" "+old_orientation+" "+window.orientation);
         if(old_orientation != new_orientation){
           old_orientation = new_orientation;
           var msg = {
@@ -51,7 +52,7 @@
             room     :channel
           };
           (window.orientation < 0)? msg.play = 'start' : msg.play = 'stop';
-          $('#log').text(channel+" "+msg.play+" "+msg.orientation);
+          // $('#log').text(channel+" "+msg.play+" "+msg.orientation);
           socket.emit('linked', msg);
         }
       }
