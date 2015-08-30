@@ -21,7 +21,6 @@
     <div id="aaa"></div>
     <p id="play">play:</p>
     <p id="orientation">orientation:</p>
-    <p id="Abl">Abl:</p>
     <p id="alpha">alpha:</p>
     <p id="beta">beta:</p>
     <p id="gamma">gamma:</p>
@@ -36,16 +35,18 @@
       var firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
+      socket.on('ask_channel', function(msg){
+        if(msg==randomValue) socket.emit('answer_channel',msg);
+      });
+
       var player;
-      socket.on('chat message', function(msg){
+      socket.on(randomValue, function(msg){
         var message = msg;
         $('#orientation').text('orientation:'+message.orientation);
-        $('#Abl').text('Abl:'+message.absolute);
         $('#alpha').text('alpha:'+message.alpha);
         $('#beta').text('beta:'+message.beta);
         $('#gamma').text('gamma:'+message.gamma);
         $('#play').text('play:'+message.play);
-        console.log('play:'+message.play)
         if (message.play == 'start'){
           player.playVideo();
         }
