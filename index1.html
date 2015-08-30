@@ -37,18 +37,22 @@
       });
       window.addEventListener("deviceorientation", showOrientation, true);
       function showOrientation(event) {
-        var msg = {
-          orientation:window.orientation,
-          alpha    :Math.round(event.alpha),
-          beta     :Math.round(event.beta),
-          gamma    :Math.round(event.gamma),
-          play     :'start',
-          room     :channel
-        };
-        (window.orientation < 0)? msg.play = 'start' : msg.play = 'stop';
-        $('#log').text(channel+" "+msg.play+" "+msg.orientation);
-        var last_orientation;
-        if(last_orientation != msg.orientation) socket.emit('linked', msg);
+        var old_orientation;
+        var new_orientation = window.orientation
+        if(old_orientation != new_orientation){
+          old_orientation = new_orientation;
+          var msg = {
+            orientation:new_orientation,
+            alpha    :Math.round(event.alpha),
+            beta     :Math.round(event.beta),
+            gamma    :Math.round(event.gamma),
+            play     :'start',
+            room     :channel
+          };
+          (window.orientation < 0)? msg.play = 'start' : msg.play = 'stop';
+          $('#log').text(channel+" "+msg.play+" "+msg.orientation);
+          socket.emit('linked', msg);
+        }
       }
     </script>
   </body>
