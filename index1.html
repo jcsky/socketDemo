@@ -18,7 +18,8 @@
       <input id="m" type="text" placeholder="輸入網頁上的Code">
       <button>Send</button>
     </form>
-    <p id="log"></p>
+    <h1 id="log"></h1>
+    <h1 id="log1"></h1>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
@@ -32,6 +33,7 @@
       });
       socket.on('answer_channel',function(msg){
         if(code==msg) channel=code;
+        $('#log1').text("ans:"+code+" "+channel);
       });
       window.addEventListener("deviceorientation", showOrientation, true);
       function showOrientation(event) {
@@ -44,7 +46,7 @@
           room     :channel
         };
         (window.orientation < 0)? msg.play = 'start' : msg.play = 'stop';
-        $('#log').text=channel+" "+msg.play+" "+msg.alpha;
+        $('#log').text(channel+" "+msg.play+" "+msg.alpha);
         socket.emit('linked', msg);
       }
     </script>
