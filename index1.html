@@ -39,7 +39,7 @@
       function showOrientation(event) {
         var old_orientation;
         var new_orientation;
-        new_orientation = round(window.orientation);
+        new_orientation = Math.round(window.orientation);
         $('#log').text(new_orientation+" "+old_orientation+" "+window.orientation);
         if(old_orientation != new_orientation){
           old_orientation = new_orientation;
