@@ -15,51 +15,38 @@
   <body>
     <ul id="messages"></ul>
     <form action="">
-      <select id='m' style='font-size:140%;'>
+      <!-- <select id='m' style='font-size:140%;'>
         <option value="start">start</option>
         <option value="stop">stop</option>
-      </select>
+      </select> -->
+      <input id="m" type="text" placeholder="輸入網頁上的Code">
       <button>Send</button>
     </form>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
       var socket = io();
+      var channel = 'chat message';
+      var code;
       $('form').submit(function(){
-        socket.emit('chat message', $('#m').val());
+        code = $('#m').val();
+        socket.emit('ask_channel', code);
         return false;
       });
-      // socket.on('chat message', function(msg){
-      //   $('#messages').append($('<li>').text(msg));
-      // });
+      socket.on('answer_channel',function(msg){
+        if(code==msg) channel=code;
+      });
       window.addEventListener("deviceorientation", showOrientation, true);
-
-      window.setInterval("deviceAngle",1000);
-      function deviceAngle(){
-        var angle;
-        if(angle*window.orientation < 0){
-          if (angle < 0){
-            msg = {play:'start',absolute:'setInterval'}
-            socket.emit('chat message', JSON.stringify(msg));
-          }else{
-            msg = {play:'stop',absolute:'setInterval'}
-            socket.emit('chat message', JSON.stringify(msg));
-          }
-        }
-        angle = window.orientation
-      }
-
       function showOrientation(event) {
         var msg = {
           orientation:window.orientation,
-          absolute :Math.round(event.absolute),
           alpha    :Math.round(event.alpha),
           beta     :Math.round(event.beta),
           gamma    :Math.round(event.gamma),
           play     :'start'
         };
         (window.orientation < 0)? msg.play = 'start' : msg.play = 'stop';
-        socket.emit('chat message', msg);
+        socket.emit(channel, msg);
       }
     </script>
   </body>
