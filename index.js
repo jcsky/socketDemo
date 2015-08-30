@@ -28,6 +28,11 @@ io.on('connection', function(socket){
     io.emit('answer_channel', msg);
     console.log('answer_channel='+msg);
   });
+  socket.on('linked', function(msg){
+    io.emit(msg.room, msg);
+    console.log('linked='+msg.room);
+  });
+
 });
 
 http.listen(3000, function(){

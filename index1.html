@@ -15,13 +15,10 @@
   <body>
     <ul id="messages"></ul>
     <form action="">
-      <!-- <select id='m' style='font-size:140%;'>
-        <option value="start">start</option>
-        <option value="stop">stop</option>
-      </select> -->
       <input id="m" type="text" placeholder="輸入網頁上的Code">
       <button>Send</button>
     </form>
+    <p id="log"></p>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
@@ -43,10 +40,12 @@
           alpha    :Math.round(event.alpha),
           beta     :Math.round(event.beta),
           gamma    :Math.round(event.gamma),
-          play     :'start'
+          play     :'start',
+          room     :channel
         };
         (window.orientation < 0)? msg.play = 'start' : msg.play = 'stop';
-        socket.emit(channel, msg);
+        $('#log').text=channel+" "+msg.play+" "+msg.alpha;
+        socket.emit(linked, msg);
       }
     </script>
   </body>
