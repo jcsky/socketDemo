@@ -46,8 +46,9 @@
           room     :channel
         };
         (window.orientation < 0)? msg.play = 'start' : msg.play = 'stop';
-        $('#log').text(channel+" "+msg.play+" "+msg.alpha);
-        socket.emit('linked', msg);
+        $('#log').text(channel+" "+msg.play+" "+msg.orientation);
+        var last_orientation;
+        if(last_orientation != msg.orientation) socket.emit('linked', msg);
       }
     </script>
   </body>
