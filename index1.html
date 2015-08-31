@@ -58,6 +58,7 @@
       // }
 
       // Listen for orientation changes
+      var angle;
       window.addEventListener("orientationchange", function() {
         var msg = {
             orientation:window.orientation,
@@ -67,8 +68,13 @@
             play     :'start',
             room     :channel
           };
-          (msg.orientation < 0)? msg.play = 'start' : msg.play = 'stop';
-          socket.emit('linked', msg);
+          if(angle == msg.orientation){
+
+          }else{
+            angle = msg.orientation;
+            (msg.orientation < 0)? msg.play = 'start' : msg.play = 'stop';
+            socket.emit('linked', msg);
+          }
       }, false);
 
     </script>
