@@ -16,16 +16,10 @@
   <body>
     <script>
       var randomValue = new String(Math.floor(Math.random() * Math.pow(36, 5)).toString(36)).toUpperCase();
-      document.write("<h1>Your Channel: "+randomValue+"</h1>")
+      document.write("<h1>你的手機配對碼: "+randomValue+"</h1>")
     </script>
     <h1>玩法: 請將手機橫拿，然後旋轉180度</h1>
-    <button onclick="myFunction()">Click me</button><button onclick="myFunction2()">change me</button>
     <div id="aaa"></div>
-    <p id="play">play:</p>
-    <h3>手機角度</h3>
-    <p id="orientation">orientation:</p>
-    <p id="current-time">current-time:</p>
-    <p id="duration">duration:</p>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
@@ -36,7 +30,7 @@
       tag.src = "https://www.youtube.com/iframe_api";
       var firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
+      // 配對成功，回傳確認訊息
       socket.on('ask_channel', function(msg){
         if(msg==randomValue) socket.emit('answer_channel',msg);
       });
@@ -44,11 +38,6 @@
       var player;
       socket.on(randomValue, function(msg){
         var message = msg;
-        $('#orientation').text('orientation:'+message.orientation);
-        $('#current-time').text('current-time:'+player.getCurrentTime());
-        $('#duration').text('duration:'+player.getDuration());
-        $('#gamma').text('gamma:'+message.gamma);
-        $('#play').text('play:'+message.play);
         if (message.play == 'start'){
           player.loadVideoById({videoId:'VcoRKfAztYk',
                       startSeconds:player.getCurrentTime(),
@@ -68,7 +57,6 @@
           height: '390',
           width: '640',
           videoId: 'UtF6Jej8yb4',
-          // iHjmbiPJ6Oc
           events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
