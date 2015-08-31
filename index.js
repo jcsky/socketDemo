@@ -6,10 +6,6 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
   console.log('get /');
 });
-app.get('/aaa', function(req, res){
-  res.sendFile(__dirname + '/index1.html');
-  console.log('get /aaa');
-});
 app.get('/mobi', function(req, res){
   res.sendFile(__dirname + '/index1.html');
   console.log('get /mobi');

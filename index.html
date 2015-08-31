@@ -5,21 +5,11 @@
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
     </style>
   </head>
   <body>
 
     <h1 id='tutorial'>請用手機開啟 http://139.162.22.47:3000/mobi 頁面</h1>
-    <img src="/p.png">
-    <img src="p.png">
-    <img src="http://139.162.22.47:3000/p.png">
-    <img style="display:none" src="/p.png">
     <script>
       var randomValue = new String(Math.floor(Math.random() * Math.pow(36, 5)).toString(36)).toUpperCase();
       document.write("<h1>在手機上輸入配對碼: "+randomValue+"</h1>")
@@ -40,7 +30,6 @@
         if(msg==randomValue){
           socket.emit('answer_channel',msg);
           $('#tutorial').text('配對成功~! 將手機橫拿以撥放影片 / 翻轉以切換影片')
-          $('img').toggle(true);
         }
       });
 
