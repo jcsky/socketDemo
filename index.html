@@ -29,7 +29,8 @@
       socket.on('ask_channel', function(msg){
         if(msg==randomValue){
           socket.emit('answer_channel',msg);
-          $('#tutorial').text('配對成功~! 將手機橫拿以撥放影片 / 翻轉以切換影片')
+          $('h1').text("");
+          $('#tutorial').text('配對成功~!<br> 請將手機橫拿以撥放影片 / 翻轉以切換影片');
         }
       });
 
