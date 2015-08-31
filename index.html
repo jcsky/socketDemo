@@ -18,12 +18,14 @@
       var randomValue = new String(Math.floor(Math.random() * Math.pow(36, 5)).toString(36)).toUpperCase();
       document.write("<h1>Your Channel: "+randomValue+"</h1>")
     </script>
+    <h1>玩法: 請將手機橫拿，</h1>
     <div id="aaa"></div>
     <p id="play">play:</p>
+    <h3>手機角度</h3>
     <p id="orientation">orientation:</p>
-    <p id="alpha">alpha:</p>
-    <p id="beta">beta:</p>
-    <p id="gamma">gamma:</p>
+    <p id="current-time">current-time:</p>
+    <p id="duration">duration:</p>
+
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
@@ -43,15 +45,21 @@
       socket.on(randomValue, function(msg){
         var message = msg;
         $('#orientation').text('orientation:'+message.orientation);
-        $('#alpha').text('alpha:'+message.alpha);
-        $('#beta').text('beta:'+message.beta);
+        $('#current-time').text('current-time:'+player.getCurrentTime());
+        $('#duration').text('duration:'+player.getDuration());
         $('#gamma').text('gamma:'+message.gamma);
         $('#play').text('play:'+message.play);
         if (message.play == 'start'){
+          player.videoId = 'iHjmbiPJ6Oc';
+          dura = player.getDuration();
+          player.seekTo(duro,ture);
           player.playVideo();
         }
         else{
-          player.stopVideo();
+          player.videoId = 'UtF6Jej8yb4';
+          dura = player.getDuration();
+          player.seekTo(duro,ture);
+          player.playVideo();
         }
       });
       // 3. This function creates an <iframe> (and YouTube player)
@@ -62,6 +70,7 @@
           height: '390',
           width: '640',
           videoId: 'UtF6Jej8yb4',
+          // iHjmbiPJ6Oc
           events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
