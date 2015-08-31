@@ -33,7 +33,6 @@
       });
       socket.on('answer_channel',function(msg){
         if(code==msg) channel=code;
-        $('#log1').text("ans:"+code+" "+channel);
       });
       // window.addEventListener("deviceorientation", showOrientation, true);
       // function showOrientation(event) {
@@ -71,7 +70,9 @@
           if(angle == msg.orientation){
 
           }else{
+            $('#log').text(angle+" "+msg.orientation);
             angle = msg.orientation;
+            $('#log1').text(angle+" "+msg.orientation);
             (msg.orientation < 0)? msg.play = 'start' : msg.play = 'stop';
             socket.emit('linked', msg);
           }
