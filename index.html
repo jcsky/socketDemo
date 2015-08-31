@@ -51,14 +51,14 @@
         $('#play').text('play:'+message.play);
         if (message.play == 'start'){
           player.videoId = 'iHjmbiPJ6Oc';
-          dura = player.getDuration();
-          player.seekTo(duro,ture);
+          curr= player.getCurrentTime();
+          player.seekTo(curr,ture);
           player.playVideo();
         }
         else{
           player.videoId = 'UtF6Jej8yb4';
-          dura = player.getDuration();
-          player.seekTo(duro,ture);
+          curr= player.getCurrentTime();
+          player.seekTo(curr,ture);
           player.playVideo();
         }
       });
