@@ -14,11 +14,16 @@
     </style>
   </head>
   <body>
+
+    <h1 id='tutorial'>請用手機開啟 http://139.162.22.47:3000/mobi 頁面</h1>
+    <img src="/p.png">
+    <img src="p.png">
+    <img src="http://139.162.22.47:3000/p.png">
+    <img style="display:none" src="/p.png">
     <script>
       var randomValue = new String(Math.floor(Math.random() * Math.pow(36, 5)).toString(36)).toUpperCase();
-      document.write("<h1>你的手機配對碼: "+randomValue+"</h1>")
+      document.write("<h1>在手機上輸入配對碼: "+randomValue+"</h1>")
     </script>
-    <h1>玩法: 請將手機橫拿，然後旋轉180度即可 撥放/切換 影片</h1>
     <div id="aaa"></div>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
@@ -32,7 +37,11 @@
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
       // 配對成功，回傳確認訊息
       socket.on('ask_channel', function(msg){
-        if(msg==randomValue) socket.emit('answer_channel',msg);
+        if(msg==randomValue){
+          socket.emit('answer_channel',msg);
+          $('#tutorial').text('配對成功~! 將手機橫拿以撥放影片 / 翻轉以切換影片')
+          $('img').toggle(true);
+        }
       });
 
       var player;
